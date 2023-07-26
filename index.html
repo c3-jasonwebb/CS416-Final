@@ -33,7 +33,7 @@
                 var y = d3.scaleLinear().domain([1, 25]).range([chartHeight, 0]);
                 
                 /**
-                 * Y-Axis setup 
+                 * Y-Axis setup
                  */
                 d3.select('svg')
                   .append('g')
@@ -41,7 +41,7 @@
                   .call(d3.axisLeft(y));
 
                 /**
-                 * X-Axis setup 
+                 * X-Axis setup
                  */
                 d3.select('svg')
                   .append('g')
@@ -49,7 +49,7 @@
                   .call(d3.axisBottom(x));
 
                 /**
-                 * Title setup 
+                 * Title setup
                  */
                 d3.select('svg')
                   .append('text')
@@ -59,10 +59,10 @@
                   .style('font-family', 'Roboto')
                   .style('font-size', 30)
                   .style('fill', 'black')
-                  .text('Impact of the Opiod Crisis');
+                  .text('Impact of the Opioid Crisis');
 
                 /**
-                 * Legend setup 
+                 * Legend setup
                  */
                 var legendLabels = ['Total Overdose Deaths', 'Opioid Overdose Deaths'];
                 var colors = ['#0034F0', '#FC6000'];
@@ -78,8 +78,25 @@
                   .attr('r', 6)
                   .style('fill', function (d, idx) { return colors[idx]; });
 
+                d3.select('svg')
+                  .append('g')
+                  .attr('transform', 'translate(' + margin + ',' + margin + ')')
+                  .selectAll('text')
+                  .data(legendLabels)
+                  .enter()
+                  .append('text')
+                  .attr('x', 70)
+                  .attr('y', function(d, idx) { return 50 + idx * 25; })
+                  .style('fill', function(d) { return 'black'; })
+                  .style('font-family', 'Roboto')
+                  .style('font-size', 15)
+                  .text(function(d) { return d; })
+                  .attr('text-anchor', 'left')
+                  .style('alignment-baseline', 'middle')
+
+
                 /**
-                 * Y-Axis title setup 
+                 * Y-Axis title setup
                  */
                 d3.select('svg')
                   .append('text')
@@ -91,7 +108,7 @@
                   .text('Deaths per 100K People');
 
                 /**
-                 * X-Axis title setup 
+                 * X-Axis title setup
                  */
                 var xAxisTitleHeight = axisBottomHeight + 35
                 d3.select('svg')
@@ -105,7 +122,7 @@
                   .text('Year');
 
                 /**
-                 * Section for the first line 
+                 * Section for the first line
                  */
                 d3.select('svg')
                   .append('g')
@@ -136,7 +153,7 @@
                   .style('stroke-width', '2');
                 
                 /**
-                 * Section for the second line 
+                 * Section for the second line
                  */
                  d3.select('svg')
                   .append('g')
